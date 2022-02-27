@@ -1,0 +1,45 @@
+<mat-drawer-container class="ifo-sidenav-container">
+  <mat-drawer #drawer class="ifo-sidenav" mode="side" opened="true">
+
+    <section class="ifo-sidenav-title">
+      <mat-icon aria-hidden="false" aria-label="Intelligent File Organizer">cloud icon</mat-icon>
+      <h1>IFO</h1>
+    </section>
+
+    <section class="info-sidenav-upload">
+      <input #fileUploadInput type="file" id="ifo-file" hidden aria-hidden="true" (change)="handleFileInput($event)" />
+
+      <button mat-raised-button color="primary" (click)="fileUploadInput.click()">
+        Upload any file
+        <mat-icon aria-hidden="false" aria-label="Upload a file">expand_more</mat-icon>
+      </button>
+    </section>
+
+  </mat-drawer>
+
+  <section class="ifo-mainpage">
+    <section class="ifo-mainsearch-container">
+      <input class="ifo-mainsearch" type="text" placeholder="Type any relevant file info" aria-label="File search" matInput [formControl]="myControl">
+    </section>
+
+    <section class="ifo-categories">
+      <h1>Categories</h1>
+      <br />
+
+      <!-- Category cards -->
+      <div class="category-cards">
+        <div class="card-wrapper" *ngFor="let category of categories">
+          <mat-card class="ifo-category-card ifo-card">
+            <!-- <mat-card-subtitle>Category</mat-card-subtitle> -->
+            <mat-card-title>{{category.title}}</mat-card-title>
+
+            <mat-card-content>
+              <p>{{category.description}}</p>
+              <p>{{category.team}}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </section>
+</mat-drawer-container>
